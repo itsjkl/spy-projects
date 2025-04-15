@@ -1,1 +1,155 @@
-<h1>Hello fellow sigma</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cleo's Photo Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --size: 250px;
+      --speed: 50s;
+      --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+    }
+
+    @media (min-width: 720px) {
+      :root {
+        --size: 500px;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.25s ease-out;
+    }
+
+    body {
+      background-color: #0f0f0f;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .glitch {
+      font-size: 3rem;
+      font-weight: 600;
+      position: relative;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .glitch::before {
+      color: #0ff;
+      animation: glitchTop 2s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: #f00;
+      animation: glitchBottom 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchTop {
+      0% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(-2px, -2px);
+      }
+      50% {
+        clip: rect(0, 9999px, 100%, 0);
+        transform: translate(2px, 2px);
+      }
+      100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(-1px, 1px);
+      }
+    }
+
+    @keyframes glitchBottom {
+      0% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(2px, 1px);
+      }
+      50% {
+        clip: rect(0, 9999px, 100%, 0);
+        transform: translate(-1px, -1px);
+      }
+      100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(1px, -2px);
+      }
+    }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .subtle {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #ccc;
+      font-weight: 400;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="glitch" data-text="Cleo's Photo Library">Cleo's Photo Library</h1>
+    
+    <section class="photo-gallery">
+      <div class="photo-item"><img src="path/to/image1.jpg" alt="Photo 1"></div>
+      <div class="photo-item"><img src="path/to/image2.jpg" alt="Photo 2"></div>
+      <div class="photo-item"><img src="path/to/image3.jpg" alt="Photo 3"></div>
+      <div class="photo-item"><img src="path/to/image4.jpg" alt="Photo 4"></div>
+      <div class="photo-item"><img src="path/to/image5.jpg" alt="Photo 5"></div>
+      <div class="photo-item"><img src="path/to/image6.jpg" alt="Photo 6"></div>
+    </section>
+
+    <p class="subtle">More photos coming soon...</p>
+  </div>
+
+  <script>
+    console.log("Sup");
+  </script>
+</body>
+</html>
